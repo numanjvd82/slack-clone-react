@@ -1,0 +1,28 @@
+.sidebarOption {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding-left: 0.3rem;
+  padding-bottom: 0.6rem;
+  transition: all 300ms ease;
+
+  &:hover {
+    opacity: 0.7;
+    background: rgb(39, 39, 39);
+  }
+
+  .sidebarOption__icon {
+    padding: 0.6rem;
+    font-size: 3rem !important;
+  }
+
+  .sidebarOption__channel {
+    margin-left: 0.5rem;
+    font-weight: normal;
+  }
+
+  & > h3 {
+    font-weight: normal;
+  }
+}
