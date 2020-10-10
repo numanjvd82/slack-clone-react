@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './sidebar.styles.scss';
 import SidebarOption from './sidebaroption';
+import db from '../../firebase/firebase';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import CreateIcon from '@material-ui/icons/Create';
 import ChatIcon from '@material-ui/icons/Chat';
@@ -15,6 +16,19 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
 
 const Sidebar = () => {
+  const [channels, setChannels] = useState([]);
+
+  useEffect(() => {
+    //  Run this code ONCE when the sidebar component loads
+    db.collection('rooms').onSnapshot((snapshot) => {
+      setChannels(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          name: doc.data().Name,
+        }))
+      );
+    });
+  }, []);
   return (
     <div className="sidebar">
       <div className="sidebar__header">
@@ -38,10 +52,19 @@ const Sidebar = () => {
       <hr />
       <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
       <hr />
-      <SidebarOption Icon={AddIcon} title="Add More" />
+      <SidebarOption Icon={AddIcon} title="Add Channels" />
 
       {/* Connect to DB and Get all the channels in the database */}
       {/* Also gonna use sidebarOption component again for channels icon */}
+      {channels.map((channel) => {
+        return (
+          <SidebarOption
+            key={channel.id}
+            title={channel.name}
+            id={channel.id}
+          />
+        );
+      })}
     </div>
   );
 };
