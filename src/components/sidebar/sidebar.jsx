@@ -52,7 +52,7 @@ const Sidebar = () => {
       <hr />
       <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
       <hr />
-      <SidebarOption Icon={AddIcon} title="Add Channels" />
+      <SidebarOption Icon={AddIcon} title="Add Channels" addChannelOption />
 
       {/* Connect to DB and Get all the channels in the database */}
       {/* Also gonna use sidebarOption component again for channels icon */}

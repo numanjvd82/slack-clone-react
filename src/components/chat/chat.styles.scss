@@ -1,0 +1,32 @@
+.chat {
+  flex: 1;
+
+  .chat__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid lightgray;
+  }
+
+  .chat__channelName {
+    text-transform: lowercase;
+    display: flex;
+    align-items: center;
+
+    & > .MuiSvgIcon-root {
+      padding-left: 0.5rem !important;
+      font-size: 1.8rem;
+    }
+  }
+
+  .chat__header-right > p {
+    display: flex;
+    align-items: center;
+
+    & > .MuiSvgIcon-root {
+      padding-right: 0.5rem !important;
+      font-size: 2rem;
+    }
+  }
+}
